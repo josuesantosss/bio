@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josué Santos</title>
-    <!-- Importando a fonte Poppins do Google Fonts para aproximar o estilo -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Importando FontAwesome para os ícones -->
+    <title>Josué Santos 🎺 | Trompetista e Educador</title>
+
+    <!-- SEO básico -->
+    <meta name="description" content="Josué Santos — Trompetista, professor alfabetizador e arte educador. Agende uma apresentação ou aula de trompete.">
+    <meta name="author" content="Josué Santos">
+    <meta name="theme-color" content="#f5f5f7">
+
+    <!-- Open Graph (preview em WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Josué Santos 🎺 | Trompetista e Educador">
+    <meta property="og:description" content="Músico, professor e arte educador. Agende uma apresentação ou aula!">
+    <!-- EDITE AQUI: coloque o link público da sua foto -->
+    <meta property="og:image" content="https://seusite.com/josue.jpeg">
+    <meta property="og:url" content="https://seusite.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon com emoji de trompete -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎺</text></svg>">
+
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dourado: #d4af37;
+            --texto: #2c2c2c;
+            --texto-suave: #3f3f3f;
+            --card: rgba(255, 255, 255, 0.85);
+            --card-hover: #ffffff;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Fundo neutro e limpo */
             background: linear-gradient(135deg, #f5f5f7 0%, #eef0f3 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            color: var(--texto);
+            padding: 20px 0;
+            /* pequeno brilho decorativo */
+            background-attachment: fixed;
         }
 
         .container {
@@ -35,46 +58,79 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            animation: fadeIn 0.6s ease-out;
         }
 
-        /* Título principal */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h1 {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: #2c2c2c;
+            font-weight: 700;
+            color: var(--texto);
             letter-spacing: 1px;
             margin-bottom: 20px;
         }
 
-        /* Foto de perfil (Tamanho aumentado) */
+        /* Foto de perfil com anel dourado */
         .profile-pic-container {
-            width: 180px;  /* Aumentado de 130px para 160px */
-            height: 180px; /* Aumentado de 130px para 160px */
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            margin-bottom: 14px;
+            border: 3px solid var(--dourado);
+            padding: 4px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
         }
 
         .profile-pic-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
-        /* Handle / Usuário */
         .username {
             font-size: 1rem;
-            color: #3f3f3f;
-            margin-bottom: 25px;
+            color: var(--texto-suave);
+            margin-bottom: 22px;
         }
 
-        /* Seção de ícones de redes sociais */
+        /* CTA principal — Agendar */
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+        }
+
+        /* Ícones de redes sociais */
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 18px;
-            margin-bottom: 35px;
+            gap: 14px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
@@ -82,55 +138,106 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 55px;
-            height: 55px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.2s;
+            font-size: 1.4rem;
+            background: #fff;
             box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .social-icons a:hover {
-            transform: scale(1.1);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
         }
 
-        /* Cores dos ícones */
-        .whatsapp { color: #25d366; background: white; }
-        .instagram { color: #e1306c; background: white; }
-        .facebook { color: #1877f2; background: white; }
-        .email { color: #333; background: white; }
-        .chat { color: #2c2c42; background: white; }
+        .whatsapp { color: #25d366; }
+        .instagram { color: #e1306c; }
+        .facebook { color: #1877f2; }
+        .email { color: #333; }
+        .youtube { color: #ff0000; }
 
-        /* Lista de Links / Profissões / Interesses */
+        /* Lista de descrições */
         .links-list {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 25px;
         }
 
         .link-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.8);
+            gap: 10px;
+            background: var(--card);
             border-radius: 30px;
             padding: 14px 20px;
             text-decoration: none;
-            color: #333;
+            color: var(--texto);
             font-size: 0.95rem;
-            font-weight: 400;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-            transition: background 0.2s;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
         }
 
         .link-item:hover {
-            background: rgba(255, 255, 255, 1);
+            background: var(--card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
         }
 
-        .link-item span {
-            margin-right: 8px;
+        .link-item i {
+            font-size: 1.05rem;
+            color: var(--dourado);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Botão compartilhar */
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1.5px solid #ccc;
+            color: var(--texto-suave);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .share-button:hover {
+            background: #fff;
+            border-color: var(--dourado);
+            color: var(--dourado);
+        }
+
+        /* Modo escuro automático */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a1d 0%, #232328 100%);
+                color: #eee;
+            }
+            h1 { color: #fff; }
+            .username { color: #bbb; }
+            .profile-pic-container { background: #2a2a2e; }
+            .link-item {
+                background: rgba(255,255,255,0.06);
+                color: #eee;
+            }
+            .link-item:hover { background: rgba(255,255,255,0.12); }
+            .social-icons a { background: #2a2a2e; }
+            .email { color: #eee; }
+            .share-button { border-color: #555; color: #ccc; }
+            .share-button:hover { background: #2a2a2e; }
         }
     </style>
 </head>
@@ -140,42 +247,101 @@
         <!-- Nome -->
         <h1>JOSUÉ SANTOS 🎺</h1>
 
-        <!-- Foto de Perfil Local Maior -->
+        <!-- Foto de perfil -->
         <div class="profile-pic-container">
-            <img src="josue.jpeg" alt="Josué Santos">
+            <img src="josue.jpeg" alt="Foto de Josué Santos">
         </div>
 
-        <!-- @ do usuário -->
+        <!-- Handle -->
         <div class="username">@josuesantos</div>
 
-        <!-- Ícones de Contato/Redes Sociais -->
+        <!-- CTA principal -->
+        <!-- EDITE AQUI: ajuste a mensagem pré-preenchida -->
+        <a href="https://wa.me/5517991122863?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20conversar%20sobre%20sua%20disponibilidade."
+           class="cta-button" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+            Fale comigo!
+        </a>
+
+        <!-- Redes sociais -->
         <div class="social-icons">
-            <a href="https://wa.me/5517991122863" class="whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://instagram.com/josuesantos" class="instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com/josue.tpt" class="facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="mailto:josue_santos@icloud.com" class="email" title="E-mail"><i class="fa-solid fa-envelope"></i></a>
-            <a href="mailto:josue.trumpet@gmail.com" class="chat" title="Mensagem"><i class="fa-solid fa-comment-dots"></i></a>
+            <a href="https://wa.me/5517991122863" class="whatsapp" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <!-- EDITE AQUI: link real do Instagram -->
+            <a href="https://instagram.com/josuesantos" class="instagram" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- EDITE AQUI: link real do Facebook -->
+            <a href="https://facebook.com/josue.tpt" class="facebook" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <!-- EDITE AQUI: se tiver canal no YouTube, descomente abaixo -->
+            <a href="https://www.youtube.com/@JosueSantoss" class="youtube" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="mailto:josue_santos@icloud.com" class="email" title="E-mail" aria-label="E-mail">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
         </div>
 
-        <!-- Lista de Descrições/Links -->
+        <!-- Lista de descrições / links -->
         <div class="links-list">
-            <a href="#" class="link-item">
-                <span>🎺</span> Músico Trompetista (@bandareprise)
+            <!-- EDITE AQUI: troque "" pelos links reais -->
+            <div class="link-item">
+                <i class="fa-solid fa-route"></i>
+                Bebedouro🔁Ribeirão Preto
+            </div>  
+            <a href="https://www.instagram.com/bandareprise" class="link-item" target="_blank" rel="noopener">
+                <i class="fa-solid fa-music"></i>
+                Músico Trompetista · @bandareprise
             </a>
-            <a href="#" class="link-item">
-                <span>👨‍🏫</span> Professor alfabetizador
+            <a href="https://www.instagram.com/maracujazz" class="link-item" target="blank" rel="noopener">
+                <i class="fa-solid fa-music"></i>
+                Músico Trompetista · @maracujazz
             </a>
-            <a href="#" class="link-item">
-                <span>🎼</span> Arte educador
+            <div class="link-item">
+            <i class="fa-solid fa-chalkboard-user"></i>
+                Professor alfabetizador
+            </div>            
+            <a href="https://www.instagram.com/p/DA_jr3HpUZ2/" class="link-item" target="blank" rel="noopener">
+                <i class="fa-solid fa-palette"></i>
+                Arte educador
             </a>
-            <a href="#" class="link-item">
-                <span>💻</span> Viciado em tecnologia
-            </a>
-            <a href="#" class="link-item">
-                <span>✈️</span> Amo viajar
+            <div class="link-item">
+                <i class="fa-solid fa-laptop-code"></i>
+                Viciado em tecnologia
+            </div>
+            <a href="https://www.instagram.com/p/BWghW8MjgXm/" class="link-item" target="_blank" rel="noopener">
+                <i class="fa-solid fa-plane"></i>
+                Amo viajar
             </a>
         </div>
+
+        <!-- Botão de compartilhar -->
+        <button class="share-button" onclick="compartilhar()">
+            <i class="fa-solid fa-share-nodes"></i>
+            Compartilhar cartão
+        </button>
     </div>
+
+    <script>
+        function compartilhar() {
+            const dados = {
+                title: 'Josué Santos 🎺',
+                text: 'Confira o cartão digital de Josué Santos — Trompetista e Educador.',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(dados).catch(() => {});
+            } else {
+                // Fallback: copia o link
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => alert('Link copiado! Cole onde quiser compartilhar. 🎺'))
+                    .catch(() => prompt('Copie o link abaixo:', window.location.href));
+            }
+        }
+    </script>
 
 </body>
 </html>
