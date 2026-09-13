@@ -46,7 +46,6 @@
             align-items: center;
             color: var(--texto);
             padding: 20px 0;
-            /* pequeno brilho decorativo */
             background-attachment: fixed;
         }
 
@@ -74,7 +73,6 @@
             margin-bottom: 20px;
         }
 
-        /* Foto de perfil com anel dourado */
         .profile-pic-container {
             width: 180px;
             height: 180px;
@@ -101,7 +99,6 @@
             margin-bottom: 22px;
         }
 
-        /* CTA principal — Agendar */
         .cta-button {
             display: flex;
             align-items: center;
@@ -125,7 +122,6 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
         }
 
-        /* Ícones de redes sociais */
         .social-icons {
             display: flex;
             justify-content: center;
@@ -159,7 +155,6 @@
         .email { color: #333; }
         .youtube { color: #ff0000; }
 
-        /* Lista de descrições */
         .links-list {
             width: 100%;
             display: flex;
@@ -197,7 +192,6 @@
             text-align: center;
         }
 
-        /* Botão compartilhar */
         .share-button {
             display: inline-flex;
             align-items: center;
@@ -220,6 +214,44 @@
             color: var(--dourado);
         }
 
+        /* ===== RODAPÉ COM CONTADOR ===== */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .visit-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--texto-suave);
+            opacity: 0.75;
+        }
+
+        .visit-counter i {
+            color: var(--dourado);
+            font-size: 0.85rem;
+        }
+
+        .visit-counter .numero {
+            font-weight: 700;
+            color: var(--dourado);
+            letter-spacing: 0.5px;
+        }
+
+        .copyright {
+            font-size: 0.7rem;
+            color: var(--texto-suave);
+            opacity: 0.5;
+        }
+
         /* Modo escuro automático */
         @media (prefers-color-scheme: dark) {
             body {
@@ -238,45 +270,39 @@
             .email { color: #eee; }
             .share-button { border-color: #555; color: #ccc; }
             .share-button:hover { background: #2a2a2e; }
+            .footer { border-top-color: rgba(255,255,255,0.1); }
+            .visit-counter { color: #bbb; }
+            .copyright { color: #999; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Nome -->
         <h1>JOSUÉ SANTOS 🎺</h1>
 
-        <!-- Foto de perfil -->
         <div class="profile-pic-container">
             <img src="josue.jpeg" alt="Foto de Josué Santos">
         </div>
 
-        <!-- Handle -->
         <div class="username">@josuesantos</div>
 
-        <!-- CTA principal -->
-        <!-- EDITE AQUI: ajuste a mensagem pré-preenchida -->
         <a href="https://wa.me/5517991122863?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20conversar%20sobre%20sua%20disponibilidade."
            class="cta-button" target="_blank" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i>
             Fale comigo!
         </a>
 
-        <!-- Redes sociais -->
         <div class="social-icons">
             <a href="https://wa.me/5517991122863" class="whatsapp" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <!-- EDITE AQUI: link real do Instagram -->
             <a href="https://instagram.com/josuesantos" class="instagram" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- EDITE AQUI: link real do Facebook -->
             <a href="https://facebook.com/josue.tpt" class="facebook" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
-            <!-- EDITE AQUI: se tiver canal no YouTube, descomente abaixo -->
             <a href="https://www.youtube.com/@JosueSantoss" class="youtube" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener">
                 <i class="fa-brands fa-youtube"></i>
             </a>
@@ -285,9 +311,7 @@
             </a>
         </div>
 
-        <!-- Lista de descrições / links -->
         <div class="links-list">
-            <!-- EDITE AQUI: troque "" pelos links reais -->
             <div class="link-item">
                 <i class="fa-solid fa-route"></i>
                 Bebedouro🔁Ribeirão Preto
@@ -301,7 +325,7 @@
                 Músico Trompetista · @maracujazz
             </a>
             <div class="link-item">
-            <i class="fa-solid fa-chalkboard-user"></i>
+                <i class="fa-solid fa-chalkboard-user"></i>
                 Professor alfabetizador
             </div>            
             <a href="https://www.instagram.com/p/DA_jr3HpUZ2/" class="link-item" target="blank" rel="noopener">
@@ -318,11 +342,22 @@
             </a>
         </div>
 
-        <!-- Botão de compartilhar -->
         <button class="share-button" onclick="compartilhar()">
             <i class="fa-solid fa-share-nodes"></i>
             Compartilhar cartão
         </button>
+
+        <!-- ===== RODAPÉ COM CONTADOR DE VISITAS ===== -->
+        <footer class="footer">
+            <div class="visit-counter" title="Total de visitas neste cartão">
+                <i class="fa-solid fa-eye"></i>
+                <span>Visitas:</span>
+                <span class="numero" id="contador-visitas">—</span>
+            </div>
+            <div class="copyright">
+                © <span id="ano-atual"></span> Josué Santos 🎺
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -335,12 +370,41 @@
             if (navigator.share) {
                 navigator.share(dados).catch(() => {});
             } else {
-                // Fallback: copia o link
                 navigator.clipboard.writeText(window.location.href)
                     .then(() => alert('Link copiado! Cole onde quiser compartilhar. 🎺'))
                     .catch(() => prompt('Copie o link abaixo:', window.location.href));
             }
         }
+
+        // ===== CONTADOR DE VISITAS =====
+        // Usando CountAPI (gratuito, sem cadastro): https://countapi.mileshilliard.com/
+        // EDITE AQUI: troque "josuesantos-cartao-2025" por um nome único seu.
+        // Se mudar esse nome, o contador começa do zero.
+        (function() {
+            const NAMESPACE = 'josuesantos-cartao';
+            const CHAVE = 'visitas-v1';
+            const el = document.getElementById('contador-visitas');
+
+            // Evita contar múltiplas vezes na mesma sessão
+            const jaContou = sessionStorage.getItem('visita-contada');
+
+            const url = jaContou
+                ? `https://api.countapi.xyz/get/${NAMESPACE}/${CHAVE}`
+                : `https://api.countapi.xyz/hit/${NAMESPACE}/${CHAVE}`;
+
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    el.textContent = Number(data.value).toLocaleString('pt-BR');
+                    if (!jaContou) sessionStorage.setItem('visita-contada', '1');
+                })
+                .catch(() => {
+                    el.textContent = '—';
+                });
+        })();
+
+        // Atualiza o ano do copyright automaticamente
+        document.getElementById('ano-atual').textContent = new Date().getFullYear();
     </script>
 
 </body>
