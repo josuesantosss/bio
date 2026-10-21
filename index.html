@@ -14,7 +14,6 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Josué Santos 🎺 | Trompetista e Educador">
     <meta property="og:description" content="Músico, professor e arte educador. Agende uma apresentação ou aula!">
-    <!-- EDITE AQUI: coloque o link público da sua foto -->
     <meta property="og:image" content="https://seusite.com/josue.jpeg">
     <meta property="og:url" content="https://seusite.com">
     <meta name="twitter:card" content="summary_large_image">
@@ -31,10 +30,14 @@
 
         :root {
             --dourado: #d4af37;
+            --dourado-brilho: #f0d060;
             --texto: #2c2c2c;
             --texto-suave: #3f3f3f;
             --card: rgba(255, 255, 255, 0.85);
             --card-hover: #ffffff;
+            --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --sombra-hover: 0 12px 30px rgba(212, 175, 55, 0.2);
+            --transicao-suave: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         body {
@@ -46,13 +49,13 @@
             align-items: center;
             color: var(--texto);
             padding: 20px 0;
-            /* pequeno brilho decorativo */
             background-attachment: fixed;
+            perspective: 1000px;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             padding: 30px 20px;
             display: flex;
             flex-direction: column;
@@ -62,19 +65,37 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--texto);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 20px;
+            position: relative;
+            transition: var(--transicao-suave);
         }
 
-        /* Foto de perfil com anel dourado */
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+            transition: width 0.5s ease;
+        }
+
+        h1:hover::after {
+            width: 80%;
+        }
+
+        /* Foto de perfil com anel dourado e efeito de giro suave */
         .profile-pic-container {
             width: 180px;
             height: 180px;
@@ -85,6 +106,13 @@
             padding: 4px;
             background: #fff;
             box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+            transition: var(--transicao-suave);
+            position: relative;
+        }
+
+        .profile-pic-container:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
 
         .profile-pic-container img {
@@ -93,15 +121,51 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-pic-container:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Anel giratório decorativo */
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 2px dashed var(--dourado);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: spin 8s linear infinite;
+        }
+
+        .profile-pic-container:hover::before {
+            opacity: 0.6;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .username {
             font-size: 1rem;
             color: var(--texto-suave);
             margin-bottom: 22px;
+            transition: var(--transicao-suave);
+            letter-spacing: 0.5px;
         }
 
-        /* CTA principal — Agendar */
+        .username:hover {
+            color: var(--dourado);
+            letter-spacing: 1.5px;
+        }
+
+        /* CTA principal — Agendar (formato pílula com brilho) */
         .cta-button {
             display: flex;
             align-items: center;
@@ -114,18 +178,40 @@
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             margin-bottom: 25px;
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: var(--transicao-suave);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 35px rgba(37, 211, 102, 0.5);
         }
 
-        /* Ícones de redes sociais */
+        .cta-button:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Ícones de redes sociais com animação de giro e flutuação */
         .social-icons {
             display: flex;
             justify-content: center;
@@ -144,13 +230,37 @@
             text-decoration: none;
             font-size: 1.4rem;
             background: #fff;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: var(--transicao-suave);
+            position: relative;
+        }
+
+        .social-icons a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: var(--transicao-suave);
         }
 
         .social-icons a:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            transform: translateY(-5px) rotate(8deg) scale(1.12);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .social-icons a:active {
+            transform: translateY(0) rotate(0deg) scale(0.92);
+        }
+
+        .social-icons a:hover::after {
+            border-color: var(--dourado);
+            animation: pulse-ring 1.2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.35); opacity: 0; }
         }
 
         .whatsapp { color: #25d366; }
@@ -159,65 +269,141 @@
         .email { color: #333; }
         .youtube { color: #ff0000; }
 
-        /* Lista de descrições */
+        /* Lista de descrições — cards com efeito 3D */
         .links-list {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
             margin-bottom: 25px;
+            perspective: 800px;
         }
 
         .link-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             background: var(--card);
-            border-radius: 30px;
-            padding: 14px 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            padding: 16px 22px;
             text-decoration: none;
             color: var(--texto);
             font-size: 0.95rem;
             font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicao-suave);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        /* Brilho deslizante no hover */
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.12), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-item:hover::before {
+            left: 100%;
         }
 
         .link-item:hover {
             background: var(--card-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transform: translateY(-4px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+            box-shadow: var(--sombra-hover);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .link-item:active {
+            transform: translateY(0) rotateX(0) rotateY(0) scale(0.97);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.1s ease;
         }
 
         .link-item i {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             color: var(--dourado);
-            width: 20px;
+            width: 24px;
             text-align: center;
+            transition: var(--transicao-suave);
         }
 
-        /* Botão compartilhar */
+        .link-item:hover i {
+            transform: scale(1.2) rotate(-10deg);
+            color: #b8961f;
+        }
+
+        /* Ícone com efeito de giro no clique */
+        .link-item:active i {
+            transform: scale(0.9) rotate(360deg);
+            transition: transform 0.4s ease;
+        }
+
+        /* Botão compartilhar — formato comprimido com animação */
         .share-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: transparent;
-            border: 1.5px solid #ccc;
+            border: 2px solid #ccc;
             color: var(--texto-suave);
             font-family: inherit;
             font-size: 0.85rem;
             font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 10px 22px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transicao-suave);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .share-button:hover::after {
+            width: 200px;
+            height: 200px;
         }
 
         .share-button:hover {
             background: #fff;
             border-color: var(--dourado);
             color: var(--dourado);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .share-button:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .share-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .share-button:hover i {
+            transform: rotate(15deg) scale(1.1);
         }
 
         /* Modo escuro automático */
@@ -232,12 +418,25 @@
             .link-item {
                 background: rgba(255,255,255,0.06);
                 color: #eee;
+                border-color: rgba(212, 175, 55, 0.1);
             }
-            .link-item:hover { background: rgba(255,255,255,0.12); }
+            .link-item:hover { 
+                background: rgba(255,255,255,0.12);
+                border-color: rgba(212, 175, 55, 0.3);
+            }
             .social-icons a { background: #2a2a2e; }
             .email { color: #eee; }
             .share-button { border-color: #555; color: #ccc; }
             .share-button:hover { background: #2a2a2e; }
+        }
+
+        /* Responsividade */
+        @media (max-width: 400px) {
+            .container { padding: 20px 12px; }
+            h1 { font-size: 1.3rem; }
+            .profile-pic-container { width: 140px; height: 140px; }
+            .social-icons a { width: 46px; height: 46px; font-size: 1.2rem; }
+            .link-item { padding: 14px 16px; font-size: 0.88rem; }
         }
     </style>
 </head>
@@ -256,7 +455,6 @@
         <div class="username">@josuesantos</div>
 
         <!-- CTA principal -->
-        <!-- EDITE AQUI: ajuste a mensagem pré-preenchida -->
         <a href="https://wa.me/5517991122863?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20conversar%20sobre%20sua%20disponibilidade."
            class="cta-button" target="_blank" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i>
@@ -268,15 +466,12 @@
             <a href="https://wa.me/5517991122863" class="whatsapp" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <!-- EDITE AQUI: link real do Instagram -->
             <a href="https://instagram.com/josuesantos" class="instagram" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- EDITE AQUI: link real do Facebook -->
             <a href="https://facebook.com/josue.tpt" class="facebook" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
-            <!-- EDITE AQUI: se tiver canal no YouTube, descomente abaixo -->
             <a href="https://www.youtube.com/@JosueSantoss" class="youtube" title="YouTube" aria-label="YouTube" target="_blank" rel="noopener">
                 <i class="fa-brands fa-youtube"></i>
             </a>
@@ -287,7 +482,6 @@
 
         <!-- Lista de descrições / links -->
         <div class="links-list">
-            <!-- EDITE AQUI: troque "" pelos links reais -->
             <div class="link-item">
                 <i class="fa-solid fa-route"></i>
                 Bebedouro🔁Ribeirão Preto
@@ -296,15 +490,15 @@
                 <i class="fa-solid fa-music"></i>
                 Músico Trompetista · @bandareprise
             </a>
-            <a href="https://www.instagram.com/maracujazz" class="link-item" target="blank" rel="noopener">
+            <a href="https://www.instagram.com/maracujazz" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-music"></i>
                 Músico Trompetista · @maracujazz
             </a>
             <div class="link-item">
-            <i class="fa-solid fa-chalkboard-user"></i>
+                <i class="fa-solid fa-chalkboard-user"></i>
                 Professor alfabetizador
             </div>            
-            <a href="https://www.instagram.com/p/DA_jr3HpUZ2/" class="link-item" target="blank" rel="noopener">
+            <a href="https://www.instagram.com/p/DA_jr3HpUZ2/" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-palette"></i>
                 Arte educador
             </a>
@@ -335,7 +529,6 @@
             if (navigator.share) {
                 navigator.share(dados).catch(() => {});
             } else {
-                // Fallback: copia o link
                 navigator.clipboard.writeText(window.location.href)
                     .then(() => alert('Link copiado! Cole onde quiser compartilhar. 🎺'))
                     .catch(() => prompt('Copie o link abaixo:', window.location.href));
