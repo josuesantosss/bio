@@ -10,7 +10,7 @@
     <meta name="author" content="Josué Santos">
     <meta name="theme-color" content="#f5f5f7">
 
-    <!-- Open Graph (preview em WhatsApp, Instagram, Facebook) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Josué Santos 🎺 | Trompetista e Educador">
     <meta property="og:description" content="Músico, professor e arte educador. Agende uma apresentação ou aula!">
@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://seusite.com">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Favicon com emoji de trompete -->
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎺</text></svg>">
 
     <!-- Fontes e ícones -->
@@ -32,87 +32,87 @@
             --dourado: #d4af37;
             --dourado-brilho: #f0d060;
             --texto: #2c2c2c;
-            --texto-suave: #3f3f3f;
-            --card: rgba(255, 255, 255, 0.85);
+            --texto-suave: #4a4a4a;
+            --card: rgba(255, 255, 255, 0.9);
             --card-hover: #ffffff;
-            --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.05);
-            --sombra-hover: 0 12px 30px rgba(212, 175, 55, 0.2);
-            --transicao-suave: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-hover: 0 20px 45px rgba(212, 175, 55, 0.25);
+            --transicao-suave: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f5f7 0%, #eef0f3 100%);
+            background: linear-gradient(135deg, #f2f4f8 0%, #e4e8f0 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--texto);
-            padding: 20px 0;
+            padding: 30px 15px;
             background-attachment: fixed;
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
         .container {
             width: 100%;
-            max-width: 520px;
-            padding: 30px 20px;
+            max-width: 500px;
+            padding: 35px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(30px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         h1 {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: var(--texto);
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
             position: relative;
-            transition: var(--transicao-suave);
         }
 
         h1::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
+            width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
-            transition: width 0.5s ease;
+            background: var(--dourado);
+            border-radius: 2px;
+            transition: width 0.4s ease;
         }
 
         h1:hover::after {
-            width: 80%;
+            width: 120px;
         }
 
-        /* Foto de perfil com anel dourado e efeito de giro suave */
+        /* Foto de perfil com anel animado tridimensional */
         .profile-pic-container {
-            width: 180px;
-            height: 180px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 14px;
-            border: 3px solid var(--dourado);
-            padding: 4px;
+            margin-bottom: 15px;
+            border: 4px solid var(--dourado);
+            padding: 5px;
             background: #fff;
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
             transition: var(--transicao-suave);
             position: relative;
         }
 
         .profile-pic-container:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            transform: scale(1.06) rotate(3deg);
+            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.5);
         }
 
         .profile-pic-container img {
@@ -121,30 +121,27 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .profile-pic-container:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
-        /* Anel giratório decorativo */
+        /* Anel giratório */
         .profile-pic-container::before {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
+            top: -8px; left: -8px; right: -8px; bottom: -8px;
             border-radius: 50%;
             border: 2px dashed var(--dourado);
             opacity: 0;
             transition: opacity 0.4s ease;
-            animation: spin 8s linear infinite;
+            animation: spin 10s linear infinite;
         }
 
         .profile-pic-container:hover::before {
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
         @keyframes spin {
@@ -153,69 +150,61 @@
         }
 
         .username {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--texto-suave);
-            margin-bottom: 22px;
-            transition: var(--transicao-suave);
-            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
-        .username:hover {
-            color: var(--dourado);
-            letter-spacing: 1.5px;
-        }
-
-        /* CTA principal — Agendar (formato pílula com brilho) */
+        /* CTA Principal (WhatsApp) estilo pílula moderna */
         .cta-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
-            padding: 16px 20px;
+            padding: 16px 24px;
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             color: #fff;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 28px;
             margin-bottom: 25px;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
             transition: var(--transicao-suave);
             position: relative;
             overflow: hidden;
         }
 
-        .cta-button::before {
+        .cta-button::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s ease;
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
         }
 
-        .cta-button:hover::before {
-            left: 100%;
+        .cta-button:hover::after {
+            transform: translateX(100%);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 14px 35px rgba(37, 211, 102, 0.5);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.5);
         }
 
         .cta-button:active {
             transform: translateY(1px) scale(0.98);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
         }
 
-        /* Ícones de redes sociais com animação de giro e flutuação */
+        /* Redes Sociais */
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
@@ -224,43 +213,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 52px;
-            height: 52px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             background: #fff;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             transition: var(--transicao-suave);
             position: relative;
         }
 
-        .social-icons a::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: var(--transicao-suave);
-        }
-
         .social-icons a:hover {
-            transform: translateY(-5px) rotate(8deg) scale(1.12);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-
-        .social-icons a:active {
-            transform: translateY(0) rotate(0deg) scale(0.92);
-        }
-
-        .social-icons a:hover::after {
-            border-color: var(--dourado);
-            animation: pulse-ring 1.2s ease-out infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.35); opacity: 0; }
+            transform: translateY(-6px) rotate(12deg) scale(1.15);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            background: var(--dourado);
+            color: #fff !important;
         }
 
         .whatsapp { color: #25d366; }
@@ -269,25 +237,25 @@
         .email { color: #333; }
         .youtube { color: #ff0000; }
 
-        /* Lista de descrições — cards com efeito 3D */
+        /* Lista de Links (Cards Modernos / Bento style) */
         .links-list {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 14px;
             margin-bottom: 25px;
-            perspective: 800px;
+            perspective: 1000px;
         }
 
         .link-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
+            justify-content: flex-start;
+            gap: 16px;
             background: var(--card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 22px;
             padding: 16px 22px;
             text-decoration: none;
             color: var(--texto);
@@ -298,19 +266,16 @@
             position: relative;
             overflow: hidden;
             transform-style: preserve-3d;
-            cursor: pointer;
         }
 
-        /* Brilho deslizante no hover */
+        /* Efeito de brilho deslizante ao passar o mouse */
         .link-item::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.12), transparent);
-            transition: left 0.5s ease;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: left 0.6s ease;
         }
 
         .link-item:hover::before {
@@ -319,131 +284,108 @@
 
         .link-item:hover {
             background: var(--card-hover);
-            transform: translateY(-4px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+            transform: translateY(-5px) rotateX(4deg) rotateY(-3deg) scale(1.02);
             box-shadow: var(--sombra-hover);
-            border-color: rgba(212, 175, 55, 0.4);
+            border-color: var(--dourado);
         }
 
         .link-item:active {
             transform: translateY(0) rotateX(0) rotateY(0) scale(0.97);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: all 0.1s ease;
+            transition: transform 0.1s ease;
         }
 
+        /* Ícones dentro dos cards com animação especial */
         .link-item i {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--dourado);
-            width: 24px;
+            width: 28px;
             text-align: center;
-            transition: var(--transicao-suave);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
         }
 
         .link-item:hover i {
-            transform: scale(1.2) rotate(-10deg);
-            color: #b8961f;
+            transform: scale(1.3) rotate(-15deg);
+            color: #b08d20;
         }
 
-        /* Ícone com efeito de giro no clique */
-        .link-item:active i {
-            transform: scale(0.9) rotate(360deg);
-            transition: transform 0.4s ease;
-        }
-
-        /* Botão compartilhar — formato comprimido com animação */
+        /* Botão de Compartilhar */
         .share-button {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: transparent;
-            border: 2px solid #ccc;
+            border: 2px solid #d1d5db;
             color: var(--texto-suave);
             font-family: inherit;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 10px 22px;
-            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 28px;
             cursor: pointer;
             transition: var(--transicao-suave);
             position: relative;
             overflow: hidden;
         }
 
-        .share-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
-        }
-
-        .share-button:hover::after {
-            width: 200px;
-            height: 200px;
-        }
-
         .share-button:hover {
             background: #fff;
             border-color: var(--dourado);
             color: var(--dourado);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
 
         .share-button:active {
-            transform: translateY(0) scale(0.95);
+            transform: translateY(0) scale(0.96);
         }
 
         .share-button i {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .share-button:hover i {
-            transform: rotate(15deg) scale(1.1);
+            transform: rotate(25deg) scale(1.2);
         }
 
-        /* Modo escuro automático */
+        /* Modo Escuro Automático */
         @media (prefers-color-scheme: dark) {
             body {
-                background: linear-gradient(135deg, #1a1a1d 0%, #232328 100%);
-                color: #eee;
+                background: linear-gradient(135deg, #121215 0%, #1a1a1f 100%);
+                color: #f3f4f6;
             }
-            h1 { color: #fff; }
-            .username { color: #bbb; }
-            .profile-pic-container { background: #2a2a2e; }
+            h1 { color: #ffffff; }
+            .username { color: #9ca3af; }
+            .profile-pic-container { background: #1f1f24; }
             .link-item {
-                background: rgba(255,255,255,0.06);
-                color: #eee;
-                border-color: rgba(212, 175, 55, 0.1);
+                background: rgba(255, 255, 255, 0.05);
+                color: #f3f4f6;
+                border-color: rgba(212, 175, 55, 0.15);
             }
             .link-item:hover { 
-                background: rgba(255,255,255,0.12);
-                border-color: rgba(212, 175, 55, 0.3);
+                background: rgba(255, 255, 255, 0.1);
+                border-color: var(--dourado);
             }
-            .social-icons a { background: #2a2a2e; }
-            .email { color: #eee; }
-            .share-button { border-color: #555; color: #ccc; }
-            .share-button:hover { background: #2a2a2e; }
+            .social-icons a { background: #1f1f24; color: #fff; }
+            .social-icons a:hover { background: var(--dourado); color: #fff !important; }
+            .email { color: #f3f4f6; }
+            .share-button { border-color: #4b5563; color: #d1d5db; }
+            .share-button:hover { background: #1f1f24; color: var(--dourado); }
         }
 
-        /* Responsividade */
-        @media (max-width: 400px) {
-            .container { padding: 20px 12px; }
-            h1 { font-size: 1.3rem; }
+        /* Responsividade para telas menores */
+        @media (max-width: 420px) {
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.4rem; }
             .profile-pic-container { width: 140px; height: 140px; }
-            .social-icons a { width: 46px; height: 46px; font-size: 1.2rem; }
-            .link-item { padding: 14px 16px; font-size: 0.88rem; }
+            .social-icons a { width: 44px; height: 44px; font-size: 1.15rem; }
+            .link-item { padding: 14px 18px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Nome -->
+        <!-- Título / Nome -->
         <h1>JOSUÉ SANTOS 🎺</h1>
 
         <!-- Foto de perfil -->
@@ -454,10 +396,10 @@
         <!-- Handle -->
         <div class="username">@josuesantos</div>
 
-        <!-- CTA principal -->
+        <!-- CTA Principal -->
         <a href="https://wa.me/5517991122863?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20conversar%20sobre%20sua%20disponibilidade."
-           class="cta-button" target="_blank" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i>
+            class="cta-button" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
             Fale comigo!
         </a>
 
@@ -480,35 +422,35 @@
             </a>
         </div>
 
-        <!-- Lista de descrições / links -->
+        <!-- Lista de links / cards -->
         <div class="links-list">
             <div class="link-item">
                 <i class="fa-solid fa-route"></i>
-                Bebedouro🔁Ribeirão Preto
+                <span>Bebedouro 🔁 Ribeirão Preto</span>
             </div>  
             <a href="https://www.instagram.com/bandareprise" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-music"></i>
-                Músico Trompetista · @bandareprise
+                <span>Músico Trompetista · @bandareprise</span>
             </a>
             <a href="https://www.instagram.com/maracujazz" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-music"></i>
-                Músico Trompetista · @maracujazz
+                <span>Músico Trompetista · @maracujazz</span>
             </a>
             <div class="link-item">
                 <i class="fa-solid fa-chalkboard-user"></i>
-                Professor alfabetizador
+                <span>Professor alfabetizador</span>
             </div>            
             <a href="https://www.instagram.com/p/DA_jr3HpUZ2/" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-palette"></i>
-                Arte educador
+                <span>Arte educador</span>
             </a>
             <div class="link-item">
                 <i class="fa-solid fa-laptop-code"></i>
-                Viciado em tecnologia
+                <span>Viciado em tecnologia</span>
             </div>
             <a href="https://www.instagram.com/p/BWghW8MjgXm/" class="link-item" target="_blank" rel="noopener">
                 <i class="fa-solid fa-plane"></i>
-                Amo viajar
+                <span>Amo viajar</span>
             </a>
         </div>
 
